@@ -1,0 +1,32 @@
+cargo-features = ["per-package-target"]
+
+[package]
+name = "pvz-mod"
+version = "0.1.0"
+edition = "2021"
+default-target = "i686-pc-windows-msvc"
+
+[lib]
+name = "pvzmod"
+path = "src/lib.rs"
+crate-type = ["cdylib"]
+# target = "i686-pc-windows-msvc"
+
+# [target.'i686-pc-windows-msvc']
+# rustflags = ["--cfg", "feature=\"dll\""]
+# 
+# [target.x86_64-pc-windows-msvc]
+
+[[bin]]
+name = "modrunner"
+path = "src/main.rs"
+# target = "x86_64-pc-windows-msvc"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+color-eyre = "0.6.2"
+ctor = "0.1.26"
+dll-syringe = { version = "0.15.0", features = ["into-x86-from-x64"] }
+tracing = "0.1.37"
+tracing-subscriber = "0.3.16"
